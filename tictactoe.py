@@ -4,7 +4,7 @@ arr = np.full((3, 3), '#')
 
 turn = 0
 
-print("Input the row and column to make the first move!\nEntries must be between 1 and 3.")
+print("Input the row and column (i.e '1 3') to make the first move!\nEntries must be between 1 and 3.")
 
 def win(arr, player):
     
@@ -21,14 +21,30 @@ def win(arr, player):
     return False
 
 while not (win(arr, 'X') or win(arr, 'O')) and '#' in arr:
-      
-      row, col = map(int, input().split())
+    
+      while True:
+          try:
+             row, col = map(int, input("Enter row and col (1-3): ").split())
 
-      while not (1 <= row <= 3 and 1 <= col <= 3):
+          except ValueError:
+             
+             print("Invalid input! Please enter two numbers like '2 3'")
+
+             continue
+
+          if not (1 <= row <= 3 and 1 <= col <= 3):
+              
+            print("Please ensure entries are from 1-3")
+
+            continue
+
+          if arr[row - 1, col - 1] != '#' :
+              
+            print("Please choose an empty cell")
+
+            continue
           
-          print("Please ensure entries are from 1-3")
-
-          row, col = map(int, input().split())
+          break
 
       row -= 1
 
