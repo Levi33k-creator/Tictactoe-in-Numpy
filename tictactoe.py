@@ -23,7 +23,9 @@ def win(arr, player):
 while not (win(arr, 'X') or win(arr, 'O')) and '#' in arr:
     
       while True:
+          
           try:
+              
              row, col = map(int, input("Enter row and col (1-3): ").split())
 
           except ValueError:
